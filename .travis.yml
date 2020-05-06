@@ -17,6 +17,9 @@ node_js:
   - "12.18"
   - "13.14"
   - "14.5"
+os:
+  - linux
+  - windows
 cache:
   directories:
     - node_modules
