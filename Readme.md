@@ -3,8 +3,7 @@
 [![NPM Version][npm-version-image]][npm-url]
 [![NPM Downloads][npm-downloads-image]][npm-url]
 [![Node.js Version][node-image]][node-url]
-[![Linux Build][travis-image]][travis-url]
-[![Windows Build][appveyor-image]][appveyor-url]
+[![CI Build][travis-image]][travis-url]
 [![Coverage Status][coveralls-image]][coveralls-url]
 
 Deprecate all the things
@@ -267,8 +266,6 @@ deprecate.property(exports, 'oldprop', 'oldprop >= 0.10')
 
 [MIT](LICENSE)
 
-[appveyor-image]: https://badgen.net/appveyor/ci/dougwilson/nodejs-depd/master?label=windows
-[appveyor-url]: https://ci.appveyor.com/project/dougwilson/nodejs-depd
 [coveralls-image]: https://badgen.net/coveralls/c/github/dougwilson/nodejs-depd/master
 [coveralls-url]: https://coveralls.io/r/dougwilson/nodejs-depd?branch=master
 [node-image]: https://badgen.net/npm/node/depd
@@ -276,5 +273,5 @@ deprecate.property(exports, 'oldprop', 'oldprop >= 0.10')
 [npm-downloads-image]: https://badgen.net/npm/dm/depd
 [npm-url]: https://npmjs.org/package/depd
 [npm-version-image]: https://badgen.net/npm/v/depd
-[travis-image]: https://badgen.net/travis/dougwilson/nodejs-depd/master?label=linux
+[travis-image]: https://badgen.net/travis/dougwilson/nodejs-depd/master?label=build
 [travis-url]: https://travis-ci.org/dougwilson/nodejs-depd
