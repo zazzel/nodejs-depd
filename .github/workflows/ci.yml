@@ -4,7 +4,7 @@ on: [pull_request, push]
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         node-version:
@@ -25,6 +25,9 @@ jobs:
         - "12.18"
         - "13.14"
         - "14.5"
+        os:
+        - ubuntu-latest
+        - windows-latest
     steps:
     - uses: actions/checkout@v2
     - name: Install Node.js ${{ matrix.node-version }}
@@ -33,6 +36,7 @@ jobs:
         nvm install --default ${{ matrix.node-version }}
         dirname "$(npm which)" >> "$GITHUB_PATH"
     - name: Configure npm
+      shell: bash
       run: |
         npm config set shrinkwrap false
         if [[ "${{ matrix.node-version }}" == 0.* ]]; then
@@ -42,6 +46,7 @@ jobs:
       run: |
         npm rm --silent --save-dev benchmark beautify-benchmark
     - name: Setup Node.js version-specific dependencies
+      shell: bash
       run: |
         # browserify for browser testing
         # - install for Node.js > 0.8
@@ -92,12 +97,14 @@ jobs:
         npm install
     - name: List environment
       id: list_env
+      shell: bash
       run: |
         echo "node@$(node -v)"
         echo "npm@$(npm -v)"
         npm -s ls
         npm -s ls --depth=0 | awk -F'[ @]' 'NR>1 && $2 { print "::set-output name=" $2 "::" $3 }'
     - name: Run tests
+      shell: bash
       run: |
         if npm -ps ls nyc | grep -q nyc; then
           npm run test-ci
